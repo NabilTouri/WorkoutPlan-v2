@@ -13,7 +13,7 @@ export const GET = async () => {
         // Return the day
         return json(day, { status: 200 });
     } catch (error) {
-        console.error("Errore durante il recupero di day:", error);
+        console.error("Error during the request to the database: ", error);
         return {
             status: 500,
             body: { error: "Internal Server Error" }

@@ -9,7 +9,7 @@ export const load = async () => {
 }
 
 export const actions = {
-	register: async ({ request, fetch }) => {
+	register: async ({ request, fetch, url }) => {
 		//get the form data
 		const data = await request.formData();
         const name = data.get('name');
@@ -63,7 +63,7 @@ export const actions = {
 					hashedPassword
 				})
 			});
-			throw redirect(303, '/auth/login');
+			throw redirect(303, `/auth/login?redirectTo=${url.searchParams.get('redirectTo')}`);
 		} else {
 			return fail(400, {
 				username,
