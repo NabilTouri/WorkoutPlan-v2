@@ -40,3 +40,16 @@ export const PUT = async ({ request, cookies }) => {
         };
     }
 }
+
+export const DELETE = async ({ cookies }) => {
+    cookies.delete('session_token', { path: '/' })
+    return json({ message: 'Logged out' })
+}
+
+export const GET = async ({ cookies }) => {
+    const sessionToken = cookies.get('session_token')
+    if (!sessionToken) {
+        return json({ message: 'No session token' }, { status: 200 });
+    }
+    return json({sessionToken}, { status: 200 });
+}

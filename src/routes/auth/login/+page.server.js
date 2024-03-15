@@ -2,6 +2,13 @@ import { fail } from "@sveltejs/kit"
 import bcrypt from 'bcrypt'
 import { redirect } from '@sveltejs/kit'
 
+export const load = async () => {
+    const title = "Login"
+    return {
+        title
+    }
+}
+
 export const actions = {
     login: async ({ request, fetch, url }) => {
         // Get the form data
