@@ -13,6 +13,6 @@ export function mysqlconnFn() {
             database: DB_DATABASE
         });
     }
-
+    
     return mysqlconn;
 }
