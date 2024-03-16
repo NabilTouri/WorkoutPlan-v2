@@ -1,4 +1,4 @@
-import { json, error } from '@sveltejs/kit'
+import { json } from '@sveltejs/kit'
 import { mysqlconnFn } from '../../../../hooks.server.js'
 
 export const GET = async () => {
