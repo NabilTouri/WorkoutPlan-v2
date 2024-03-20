@@ -1,2 +1,5 @@
-<h1>hello word</h1>
-<a href="/training">Training</a>
+<script>
+    import Main from "../components/main.svelte";
+</script>
+
+<Main />
