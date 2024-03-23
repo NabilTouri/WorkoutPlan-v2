@@ -12,8 +12,7 @@
 	<title>{$page.data.title || 'Workout Plan'}</title>
 </svelte:head>
 
-<div class="bg-primary overflow-hidden w-full min-h-screen">
-    
+<div class="container relative flex flex-col max-w-[1400px] mx-auto w-full min-h-screen px-10 sm:px-20">
     <Header {y} {innerHeight}/>
     <slot />
 </div>
