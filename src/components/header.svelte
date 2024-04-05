@@ -2,7 +2,7 @@
     export let y;
 </script>
 
-<header class={"sticky z-[10] top-0 duration-200 flex flex-col sm:flex-row items-center justify-between border-b border-solid" +
+<header class={"sticky z-[10] top-0 duration-200 flex flex-col sm:flex-row items-center justify-between border-b border-solid px-10 sm:px-20" +
         (y > 0 ? " py-6 bg-primary border-secondary" : " py-6 bg-transparent border-transparent")}>
         
     <h1 class="font-medium text-lg text-center sm:text-left">

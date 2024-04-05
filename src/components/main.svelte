@@ -6,7 +6,7 @@
     
 </div> -->
 
-<section id="home" class="flex md:flex-row flex-col sm:py-16 py-6 ">
+<section id="home" class="flex md:flex-row flex-col sm:py-16 py-6 px-10 sm:px-20">
     <div class="flex-1 flex justify-center items-start flex-col">
 
       <div class="flex flex-row justify-between items-center w-full">
