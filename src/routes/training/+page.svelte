@@ -1,1 +1,1 @@
-<h1>training</h1>
+<h1 class="text-white">training</h1>

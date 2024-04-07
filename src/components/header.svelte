@@ -3,11 +3,12 @@
 </script>
 
 <header class={"sticky z-[10] top-0 duration-200 flex flex-col sm:flex-row items-center justify-between border-b border-solid px-10 sm:px-20" +
-        (y > 0 ? " py-6 bg-primary border-secondary" : " py-6 bg-transparent border-transparent")}>
-        
-    <h1 class="font-medium text-lg text-center sm:text-left">
-        <b class="text-white font-bold poppins">Workout</b> <span class="text-secondary">Plan</span>
-    </h1>
+        (y > 0 ? " py-6 backdrop-blur-md bg-primary/50 border-secondary" : " py-6 bg-transparent border-transparent")}>
+    <a href="/">    
+        <h1 class="font-medium text-lg text-center sm:text-left">
+            <b class="text-white font-bold poppins">Workout</b> <span class="text-secondary">Plan</span>
+        </h1>
+    </a>
     <div class="hidden sm:flex sm:gap-5 md:gap-20">
         <div class="text-white flex items-center gap-4 md:gap-16">
             <a href="#home" class="duration-200 hover:text-violet-400">

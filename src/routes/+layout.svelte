@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     import Header from '../components/Header.svelte';
     import '../app.css';
+    import 'swiper/css';
 
     let y;
     let innerWidth = 0;
@@ -12,7 +13,7 @@
 	<title>{$page.data.title || 'Workout Plan'}</title>
 </svelte:head>
 
-<div class="relative flex flex-col mx-auto w-full min-h-screen">
+<div class="flex flex-col items-stretch min-h-screen">
     <Header {y} {innerHeight}/>
     <slot />
 </div>
