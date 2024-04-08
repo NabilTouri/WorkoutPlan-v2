@@ -1,7 +1,14 @@
+import { redirect } from "@sveltejs/kit"
+import { mysqlconnFn } from "../hooks.server";
+
 export const load = async ({ fetch, cookies }) => {
+    const mysqlconn = await mysqlconnFn();
     if (cookies.get('session_token')) {
-        const response = await fetch('/api/db/user')
-        const users = await response.json()
+        const users = await mysqlconn.query("SELECT * FROM user")
+            .then(function([rows,fields]) {
+                // console.log(rows);
+                return rows;
+            });
         const user = users.find(user => user.userAuthToken === cookies.get('session_token'))
         if (!user) {
             await fetch('/api/cookies',
@@ -11,6 +18,10 @@ export const load = async ({ fetch, cookies }) => {
                     'Content-Type': 'application/json'
                 }
             })
+            throw redirect(307, '/auth/login')
+        }
+        return {
+            user
         }
     }
 }
