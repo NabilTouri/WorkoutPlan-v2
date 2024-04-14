@@ -28,7 +28,7 @@ export const actions = {
             })
         }
         // Check if the user exists
-        const users = await mysqlconn.query("SELECT * FROM user")
+        const users = await mysqlconn.query("SELECT * FROM users")
             .then(function([rows,fields]) {
                 // console.log(rows);
                 return rows;
@@ -67,7 +67,7 @@ export const actions = {
             expires: expiresAt
         });
         // Update the user's session token in the database
-        await mysqlconn.query("UPDATE user SET userAuthToken = ? WHERE id = ?", [sessionToken, user.id])
+        await mysqlconn.query("UPDATE users SET userAuthToken = ? WHERE id = ?", [sessionToken, user.id])
         // Redirect the user to the page they were trying to access
         throw redirect(303, url.searchParams.get('redirectTo') || '/')
     }

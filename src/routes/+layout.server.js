@@ -4,7 +4,7 @@ import { mysqlconnFn } from "../hooks.server";
 export const load = async ({ fetch, cookies }) => {
     const mysqlconn = await mysqlconnFn();
     if (cookies.get('session_token')) {
-        const users = await mysqlconn.query("SELECT * FROM user")
+        const users = await mysqlconn.query("SELECT * FROM users")
             .then(function([rows,fields]) {
                 // console.log(rows);
                 return rows;

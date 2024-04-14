@@ -1,257 +1,159 @@
+<script>
+    export let data
+
+    const title = data.title
+    const day = data.day
+    const training = data.training
+</script>
+
 <!-- component -->
-<div class="flex min-h-screen items-center justify-center bg-white">
-    <div class="p-6 px-0">
-  <table class="w-full min-w-max table-auto text-left">
-    <thead>
-      <tr>
-        <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-          <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Transaction</p>
-        </th>
-        <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-          <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Amount</p>
-        </th>
-        <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-          <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Date</p>
-        </th>
-        <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-          <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Status</p>
-        </th>
-        <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-          <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70">Account</p>
-        </th>
-        <th class="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4">
-          <p class="block antialiased font-sans text-sm text-blue-gray-900 font-normal leading-none opacity-70"></p>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <img src="https://docs.material-tailwind.com/img/logos/logo-spotify.svg" alt="Spotify" class="inline-block relative object-center !rounded-full w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
-            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Spotify</p>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">$2,500</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">Wed 3:00pm</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="w-max">
-            <div class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-green-500/20 text-green-900 py-1 px-2 text-xs rounded-md" style="opacity: 1;">
-              <span class="">paid</span>
+<div class="container px-6 py-8 mx-auto">
+    <h3 class="text-4xl font-bold text-white">{title}</h3>
+    <div class="mt-4">
+        
+        <div class="flex flex-wrap -mx-6">
+            <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+                <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+                    <div class="p-3 bg-indigo-600 bg-opacity-75 rounded-full">
+                        <svg class="w-8 h-8 text-white" viewBox="0 0 28 30" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.2 9.08889C18.2 11.5373 16.3196 13.5222 14 13.5222C11.6804 13.5222 9.79999 11.5373 9.79999 9.08889C9.79999 6.64043 11.6804 4.65556 14 4.65556C16.3196 4.65556 18.2 6.64043 18.2 9.08889Z"
+                                fill="currentColor"></path>
+                            <path
+                                d="M25.2 12.0444C25.2 13.6768 23.9464 15 22.4 15C20.8536 15 19.6 13.6768 19.6 12.0444C19.6 10.4121 20.8536 9.08889 22.4 9.08889C23.9464 9.08889 25.2 10.4121 25.2 12.0444Z"
+                                fill="currentColor"></path>
+                            <path
+                                d="M19.6 22.3889C19.6 19.1243 17.0927 16.4778 14 16.4778C10.9072 16.4778 8.39999 19.1243 8.39999 22.3889V26.8222H19.6V22.3889Z"
+                                fill="currentColor"></path>
+                            <path
+                                d="M8.39999 12.0444C8.39999 13.6768 7.14639 15 5.59999 15C4.05359 15 2.79999 13.6768 2.79999 12.0444C2.79999 10.4121 4.05359 9.08889 5.59999 9.08889C7.14639 9.08889 8.39999 10.4121 8.39999 12.0444Z"
+                                fill="currentColor"></path>
+                            <path
+                                d="M22.4 26.8222V22.3889C22.4 20.8312 22.0195 19.3671 21.351 18.0949C21.6863 18.0039 22.0378 17.9556 22.4 17.9556C24.7197 17.9556 26.6 19.9404 26.6 22.3889V26.8222H22.4Z"
+                                fill="currentColor"></path>
+                            <path
+                                d="M6.64896 18.0949C5.98058 19.3671 5.59999 20.8312 5.59999 22.3889V26.8222H1.39999V22.3889C1.39999 19.9404 3.2804 17.9556 5.59999 17.9556C5.96219 17.9556 6.31367 18.0039 6.64896 18.0949Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <div class="mx-5">
+                        <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
+                        <div class="text-gray-500">New Users</div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <div class="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-              <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png" alt="visa" class="inline-block relative object-center !rounded-none rounded-md h-full w-full object-contain p-1">
+            <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
+                <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+                    <div class="p-3 bg-orange-600 bg-opacity-75 rounded-full">
+                        <svg class="w-8 h-8 text-white" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.19999 1.4C3.4268 1.4 2.79999 2.02681 2.79999 2.8C2.79999 3.57319 3.4268 4.2 4.19999 4.2H5.9069L6.33468 5.91114C6.33917 5.93092 6.34409 5.95055 6.34941 5.97001L8.24953 13.5705L6.99992 14.8201C5.23602 16.584 6.48528 19.6 8.97981 19.6H21C21.7731 19.6 22.4 18.9732 22.4 18.2C22.4 17.4268 21.7731 16.8 21 16.8H8.97983L10.3798 15.4H19.6C20.1303 15.4 20.615 15.1004 20.8521 14.6261L25.0521 6.22609C25.2691 5.79212 25.246 5.27673 24.991 4.86398C24.7357 4.45123 24.2852 4.2 23.8 4.2H8.79308L8.35818 2.46044C8.20238 1.83722 7.64241 1.4 6.99999 1.4H4.19999Z"
+                                fill="currentColor"></path>
+                            <path
+                                d="M22.4 23.1C22.4 24.2598 21.4598 25.2 20.3 25.2C19.1403 25.2 18.2 24.2598 18.2 23.1C18.2 21.9402 19.1403 21 20.3 21C21.4598 21 22.4 21.9402 22.4 23.1Z"
+                                fill="currentColor"></path>
+                            <path
+                                d="M9.1 25.2C10.2598 25.2 11.2 24.2598 11.2 23.1C11.2 21.9402 10.2598 21 9.1 21C7.9402 21 7 21.9402 7 23.1C7 24.2598 7.9402 25.2 9.1 25.2Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <div class="mx-5">
+                        <h4 class="text-2xl font-semibold text-gray-700">200,521</h4>
+                        <div class="text-gray-500">Total Orders</div>
+                    </div>
+                </div>
             </div>
-            <div class="flex flex-col">
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal capitalize">visa
-                <!-- -->
-                <!-- -->1234
-              </p>
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal opacity-70">06/2026</p>
+            <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+                <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
+                    <div class="p-3 bg-pink-600 bg-opacity-75 rounded-full">
+                        <svg class="w-8 h-8 text-white" viewBox="0 0 28 28" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.99998 11.2H21L22.4 23.8H5.59998L6.99998 11.2Z" fill="currentColor"
+                                stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+                            <path
+                                d="M9.79999 8.4C9.79999 6.08041 11.6804 4.2 14 4.2C16.3196 4.2 18.2 6.08041 18.2 8.4V12.6C18.2 14.9197 16.3196 16.8 14 16.8C11.6804 16.8 9.79999 14.9197 9.79999 12.6V8.4Z"
+                                stroke="currentColor" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <div class="mx-5">
+                        <h4 class="text-2xl font-semibold text-gray-700">215,542</h4>
+                        <div class="text-gray-500">Available Products</div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
-            <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
-                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
-              </svg>
-            </span>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <img src="https://docs.material-tailwind.com/img/logos/logo-amazon.svg" alt="Amazon" class="inline-block relative object-center !rounded-full w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
-            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Amazon</p>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">$5,000</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">Wed 1:00pm</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="w-max">
-            <div class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-green-500/20 text-green-900 py-1 px-2 text-xs rounded-md" style="opacity: 1;">
-              <span class="">paid</span>
-            </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <div class="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-              <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png" alt="master-card" class="inline-block relative object-center !rounded-none rounded-md h-full w-full object-contain p-1">
-            </div>
-            <div class="flex flex-col">
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal capitalize">master card
-                <!-- -->
-                <!-- -->1234
-              </p>
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal opacity-70">06/2026</p>
-            </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
-            <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
-                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
-              </svg>
-            </span>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <img src="https://docs.material-tailwind.com/img/logos/logo-pinterest.svg" alt="Pinterest" class="inline-block relative object-center !rounded-full w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
-            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Pinterest</p>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">$3,400</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">Mon 7:40pm</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="w-max">
-            <div class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-amber-500/20 text-amber-900 py-1 px-2 text-xs rounded-md" style="opacity: 1;">
-              <span class="">pending</span>
-            </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <div class="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-              <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png" alt="master-card" class="inline-block relative object-center !rounded-none rounded-md h-full w-full object-contain p-1">
-            </div>
-            <div class="flex flex-col">
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal capitalize">master card
-                <!-- -->
-                <!-- -->1234
-              </p>
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal opacity-70">06/2026</p>
-            </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
-            <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
-                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
-              </svg>
-            </span>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <img src="https://docs.material-tailwind.com/img/logos/logo-google.svg" alt="Google" class="inline-block relative object-center !rounded-full w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
-            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">Google</p>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">$1,000</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">Wed 5:00pm</p>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="w-max">
-            <div class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-green-500/20 text-green-900 py-1 px-2 text-xs rounded-md" style="opacity: 1;">
-              <span class="">paid</span>
-            </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <div class="flex items-center gap-3">
-            <div class="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-              <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png" alt="visa" class="inline-block relative object-center !rounded-none rounded-md h-full w-full object-contain p-1">
-            </div>
-            <div class="flex flex-col">
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal capitalize">visa
-                <!-- -->
-                <!-- -->1234
-              </p>
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal opacity-70">06/2026</p>
-            </div>
-          </div>
-        </td>
-        <td class="p-4 border-b border-blue-gray-50">
-          <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
-            <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
-                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
-              </svg>
-            </span>
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td class="p-4">
-          <div class="flex items-center gap-3">
-            <img src="https://docs.material-tailwind.com/img/logos/logo-netflix.svg" alt="netflix" class="inline-block relative object-center !rounded-full w-12 h-12 rounded-lg border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1">
-            <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-bold">netflix</p>
-          </div>
-        </td>
-        <td class="p-4">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">$14,000</p>
-        </td>
-        <td class="p-4">
-          <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">Wed 3:30am</p>
-        </td>
-        <td class="p-4">
-          <div class="w-max">
-            <div class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-red-500/20 text-red-900 py-1 px-2 text-xs rounded-md" style="opacity: 1;">
-              <span class="">cancelled</span>
-            </div>
-          </div>
-        </td>
-        <td class="p-4">
-          <div class="flex items-center gap-3">
-            <div class="h-9 w-12 rounded-md border border-blue-gray-50 p-1">
-              <img src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png" alt="visa" class="inline-block relative object-center !rounded-none rounded-md h-full w-full object-contain p-1">
-            </div>
-            <div class="flex flex-col">
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal capitalize">visa
-                <!-- -->
-                <!-- -->1234
-              </p>
-              <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal opacity-70">06/2026</p>
-            </div>
-          </div>
-        </td>
-        <td class="p-4">
-          <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
-            <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
-                <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
-              </svg>
-            </span>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-    <div class="w-full pt-5 px-4 mb-8 mx-auto ">
-        <div class="text-sm text-gray-700 py-1">
-            Made with <a class="text-gray-700 font-semibold" href="https://www.material-tailwind.com/?ref=tailwindcomponents" target="_blank">Material Tailwind</a> by <a href="https://www.creative-tim.com?ref=tailwindcomponents" class="text-gray-700 font-semibold" target="_blank"> Creative Tim</a>.
         </div>
     </div>
-</div>
-
+    <div class="flex flex-col mt-8">
+        <div class="flex items-center justify-between py-3">
+            <div class="flex flex-1 items-center justify-center">
+              <div>
+                <nav class="bg-white isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                  <!-- Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" -->
+                  <a href="#" aria-current="page" class="rounded-l-md relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Monday</a>
+                  <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">Tuesday</a>
+                  <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">Wednesday</a>
+                  <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">Thursday</a>
+                  <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">Friday</a>
+                  <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">Saturday</a>
+                  <a href="#" class="rounded-r-md relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">Sunday</a>
+                </nav>
+              </div>
+            </div>
+        </div>
+          
+        <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Exercise</th>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Sets</th>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Reps</th>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Difficulty</th>
+                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        {#each training as item}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
+                                
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium leading-5 text-gray-900">{item.exercise}
+                                    </div>
+                                    <div class="text-sm leading-5 text-gray-500">{item.muscle}</div>
+                                </div>
+                                
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{item.sets}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{item.repetitions}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
+                                <span
+                                    class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">{item.difficulty}</span>
+                            </td>
+                            <td
+                                class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-nowrap border-b border-gray-200">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            </td>
+                        </tr>
+                        {/each}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

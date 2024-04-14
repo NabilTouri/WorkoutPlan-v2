@@ -4,6 +4,9 @@
     import '../app.css';
     import 'swiper/css';
 
+    export let data
+    const user = data.user || ''
+
     let y;
     let innerWidth = 0;
     let innerHeight = 0;
@@ -14,7 +17,7 @@
 </svelte:head>
 
 <div class="flex flex-col items-stretch min-h-screen">
-    <Header {y} {innerHeight}/>
+    <Header {y} {user}/>
     <slot />
 </div>
 <svelte:window bind:scrollY={y} bind:innerHeight bind:innerWidth />
