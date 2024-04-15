@@ -1,12 +1,11 @@
 <script>
     import { page } from '$app/stores';
-    import Header from '../components/Header.svelte';
+    import Header from '../components/header.svelte';
     import '../app.css';
-    import 'swiper/css';
 
     export let data
     const user = data.user || ''
-
+    console.log(user)
     let y;
     let innerWidth = 0;
     let innerHeight = 0;

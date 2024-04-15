@@ -11,13 +11,7 @@ export const load = async ({ fetch, cookies }) => {
             });
         const user = users.find(user => user.userAuthToken === cookies.get('session_token'))
         if (!user) {
-            await fetch('/api/cookies',
-            {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            cookies.delete('session_token', { path: '/' })
             throw redirect(307, '/auth/login')
         }
         return {

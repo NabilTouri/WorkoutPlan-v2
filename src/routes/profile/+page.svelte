@@ -3,6 +3,8 @@
     const user = data.user
 </script>
 
-<h1>Profile</h1>
 
-<p>Welcome {user.name} {user.surname}</p>
+<div class="text-white">
+    <h1>Profile</h1>
+    <p>Welcome {user.name} {user.surname}</p>
+</div>
