@@ -1,4 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
+import { mysqlconnFn } from "../../../hooks.server"
 import bcrypt from 'bcrypt';
 
 export const load = async () => {
@@ -10,6 +11,7 @@ export const load = async () => {
 
 export const actions = {
 	register: async ({ request, fetch, url }) => {
+		const mysqlconn = await mysqlconnFn();
 		//get the form data
 		const data = await request.formData();
         const name = data.get('name');
@@ -27,8 +29,11 @@ export const actions = {
 			});
 		}
 		//check if the username is already in use
-		const response = await fetch('/api/db/user');
-		const users = await response.json();
+		const users = await mysqlconn.query("SELECT * FROM users")
+            .then(function([rows,fields]) {
+                // console.log(rows);
+                return rows;
+            });
 		const usernames = users.map((user) => user.username);
 		if (usernames.includes(username)) {
 			return fail(400, {
@@ -49,21 +54,11 @@ export const actions = {
 			//hash the password
 			const hashedPassword = bcrypt.hashSync(password, 10); // The second argument is the cost of hashing
 			//send the data to the server
-			await fetch('/api/db/user', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-                    name,
-                    surname,
-                    age,
-                    gender,
-					username,
-					hashedPassword
-				})
-			});
+
+			await mysqlconn.query("INSERT INTO users (name, surname, age, gender, username, password) VALUES (?, ?, ?, ?, ?, ?)", [name, surname, age, gender, username, hashedPassword])
+			
 			throw redirect(303, `/auth/login?redirectTo=${url.searchParams.get('redirectTo')}`);
+		
 		} else {
 			return fail(400, {
 				username,

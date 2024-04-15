@@ -6,7 +6,8 @@ export default {
       colors: {
         primary: '#00020f',
         secondary: '#64d8cb'
-      }
+      },
+      visibility: ['group-hover'],
     }
   },
   plugins: [

@@ -4,7 +4,6 @@
         export let form;
 
         const redirectTo = $page.url.searchParams.get('redirectTo') || '/';
-        console.log(redirectTo);
 </script>
 
 <section class="flex items-center justify-center flex-grow">
