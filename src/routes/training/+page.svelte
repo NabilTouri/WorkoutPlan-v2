@@ -4,6 +4,7 @@
     const title = data.title
     const days = data.days
     const trainings = data.trainings
+    const update = data.update
 
     let currentPage = 'Monday'; // Imposta la pagina attuale
     let filteredTraining = trainings.filter(item => item.day === currentPage); // Filtra i dati in base alla pagina attuale
@@ -40,7 +41,13 @@
               
             </div>
         </div>
-          
+        <div class="flex items-center justify-between py-3">
+            <div class="flex flex-1 items-center justify-center">
+                <button
+                    class="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700"
+                    on:click={update}>Update</button> // Aggiorna il programma di allenamento
+            </div>
+        </div>
         <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
                 <table class="min-w-full">
@@ -81,7 +88,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
                                 <span
-                                    class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">{training.difficulty}</span>
+                                    class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">{training.id}</span>
                             </td>
                             <td
                                 class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-nowrap border-b border-gray-200">

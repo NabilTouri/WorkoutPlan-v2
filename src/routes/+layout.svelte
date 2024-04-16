@@ -5,7 +5,6 @@
 
     export let data
     const user = data.user || ''
-    console.log(user)
     let y;
     let innerWidth = 0;
     let innerHeight = 0;
