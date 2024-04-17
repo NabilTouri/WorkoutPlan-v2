@@ -1,7 +1,7 @@
 import { redirect } from "@sveltejs/kit"
 import { mysqlconnFn } from '../../hooks.server.js'
 
-export const load = async ({ cookies, url, parent, update }) => {
+export const load = async ({ cookies, url, parent }) => {
     const title = "Training"
     const mysqlconn = await mysqlconnFn();
 
@@ -28,6 +28,10 @@ export const load = async ({ cookies, url, parent, update }) => {
         title,
         days,
         trainings,
-        update
+
     }
+}
+
+export const _update = () => {
+    console.log("Update function called")
 }
