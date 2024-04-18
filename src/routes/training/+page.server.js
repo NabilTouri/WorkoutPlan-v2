@@ -28,10 +28,5 @@ export const load = async ({ cookies, url, parent }) => {
         title,
         days,
         trainings,
-
     }
-}
-
-export const _update = () => {
-    console.log("Update function called")
 }

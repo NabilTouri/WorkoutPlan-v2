@@ -1,7 +1,7 @@
 import { redirect } from "@sveltejs/kit"
 import { mysqlconnFn } from "../hooks.server";
 
-export const load = async ({ fetch, cookies }) => {
+export const load = async ({ cookies }) => {
     const mysqlconn = await mysqlconnFn();
     if (cookies.get('session_token')) {
         const users = await mysqlconn.query("SELECT * FROM users")
@@ -15,7 +15,8 @@ export const load = async ({ fetch, cookies }) => {
             throw redirect(307, '/auth/login')
         }
         return {
-            user
+            user,
         }
     }
+    
 }

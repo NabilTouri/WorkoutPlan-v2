@@ -7,12 +7,13 @@ export const actions = {
         const data = await request.formData()
         const sets = data.get('sets')
         const repetitions = data.get('repetitions')
+        const exercise_id = 161
         
         const id = 1;
         await mysqlconn.query(`
                 UPDATE trainings
-                SET sets = ?, repetitions = ?
+                SET sets = ?, repetitions = ?, exercise_id = ?
                 WHERE id = ?;
-            `, [sets, repetitions, id]);
+            `, [sets, repetitions, exercise_id, id]);
     }
 }

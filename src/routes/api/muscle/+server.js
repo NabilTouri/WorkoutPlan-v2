@@ -4,41 +4,51 @@ import { mysqlconnFn } from '../../../hooks.server';
 export const GET = async (loadEvent) => {
     const mysqlconn = await mysqlconnFn();
     const muscle = [
-        'abdominals',
-        'abductors',
-        'adductors',
-        'biceps',
-        'calves',
-        'chest',
-        'forearms',
-        'glutes',
-        'hamstrings',
-        'lats',
-        'lower_back',
-        'middle_back',
-        'neck',
-        'quadriceps',
-        'traps',
-        'triceps'
+        'cardio',
+        'olympic_weightlifting',
+        'plyometrics',
+        'powerlifting',
+        'strength',
+        'stretching',
+        'strongman'
     ];
+
     const { fetch } = loadEvent;
 
-    const allExercises = [];
 
-    for (const muscleName of muscle) {
-        const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscleName}`, {
-            headers: {
-                'X-Api-Key': 'mdSFB21Rg1wlfhJmUeT+aQ==Sq8gwUUGDxp8NOYB'
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`Failed to fetch data for muscle: ${muscleName}`);
+    
+    const response = await fetch(`https://api.api-ninjas.com/v1/exercises?difficulty=expert`, {
+        headers: {
+            'X-Api-Key': 'mdSFB21Rg1wlfhJmUeT+aQ==Sq8gwUUGDxp8NOYB'
         }
-
-        const exercises = await response.json();
-        allExercises.push(...exercises);
+    });
+    if (!response.ok) {
+        throw new Error(`Failed to fetch data for muscle: ${muscleName}`);
     }
+    const exercises = await response.json();
+    
 
-    return json(allExercises);
+    // Supponendo che 'exercises' sia un array di oggetti contenente gli esercizi da inserire
+    
+         // Definisci l'istruzione di inserimento
+
+        // Esegui l'istruzione di inserimento per ciascun esercizio
+        exercises.forEach(async (exercise) => {
+            await mysqlconn.query(`
+                INSERT INTO exercises (name, type, muscle, equipment, difficulty, instructions)
+                VALUES (?, ?, ?, ?, ?, ?)`,
+                [
+                    exercise.name,
+                    exercise.type,
+                    exercise.muscle,
+                    exercise.equipment,
+                    exercise.difficulty,
+                    exercise.instructions
+                ]
+            );
+        });
+    
+
+
+    return json(exercises);
 } 

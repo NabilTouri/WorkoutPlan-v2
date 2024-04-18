@@ -8,6 +8,8 @@
     let y;
     let innerWidth = 0;
     let innerHeight = 0;
+
+    
 </script>
 
 <svelte:head>
@@ -15,7 +17,10 @@
 </svelte:head>
 
 <div class="flex flex-col items-stretch min-h-screen">
-    <Header {y} {user}/>
+    {#if !$page.error}
+        <Header {y} {user}/>
+    {/if}
     <slot />
 </div>
+
 <svelte:window bind:scrollY={y} bind:innerHeight bind:innerWidth />

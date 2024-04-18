@@ -39,11 +39,12 @@
             </button>
 
                 <div class="absolute hidden group-focus-within:block z-10 -translate-x-1/2">
-                    <div class=" flex-auto overflow-hidden rounded-xl text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
+                    <div class=" flex-auto overflow-hidden rounded-xl text-sm leading-6 shadow-lg border-b border-black">
                         <div class="p-4 text-white">
                             <div class="group relative flex gap-x-6 rounded-lg p-2">
                                 <span class="font-semibold">
-                                    Benvenuto, { user.name } { user.surname }!
+                                    Benvenuto <br>
+                                    { user.name } { user.surname }!
                                     <span class="absolute inset-0"></span>
                                 </span>
                             </div>
@@ -62,9 +63,8 @@
                                     Profile
                                     
                                 </button>
-                                <button class="font-semibold">
-                                    Logout
-                                    
+                                <button on:click={() => goto('/auth/logout')} class="font-semibold">
+                                    Logout 
                                 </button>
                             </div>
                         </div>

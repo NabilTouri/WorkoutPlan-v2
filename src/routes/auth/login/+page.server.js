@@ -70,5 +70,10 @@ export const actions = {
         await mysqlconn.query("UPDATE users SET userAuthToken = ? WHERE id = ?", [sessionToken, user.id])
         // Redirect the user to the page they were trying to access
         throw redirect(303, url.searchParams.get('redirectTo') || '/')
+    },
+
+    logout: async ({ cookies }) => {
+        // cookies.delete('session_token', { path: '/' })
+        console.log(cookies.get('session_token'))
     }
 }

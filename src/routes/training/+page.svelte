@@ -1,18 +1,19 @@
 <script>
     export let data
-
+    import Table from '../../components/table.svelte';
+    import DayNav from '../../components/dayNav.svelte'
     const title = data.title
     const days = data.days
     const trainings = data.trainings
-    const update = data.update
 
     let currentPage = 'Monday'; // Imposta la pagina attuale
     let filteredTraining = trainings.filter(item => item.day === currentPage); // Filtra i dati in base alla pagina attuale
     // Funzione per gestire il clic su un elemento della navigazione
-    function handlePageClick(day) {
+    const handlePageClick = (day) => {
         currentPage = day;
         filteredTraining = trainings.filter(item => item.day === day);
     }
+
 </script>
 
 <!-- component -->
@@ -20,89 +21,26 @@
     <h3 class="text-4xl font-bold text-white">{title}</h3>
     <p class="mt-4 text-lg text-gray-300">Make your own training program for the week</p>
     <div class="flex flex-col mt-8">
-        <div class="flex items-center justify-between py-3">
-            <div class="flex flex-1 items-center justify-center">
-              
-                <nav class="bg-white isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                    {#each days as day}
-                    <button 
-                         class={`
-                             relative inline-flex items-center px-4 py-2 text-sm font-semibold
-                             ${currentPage === day.name ? 'bg-indigo-600 text-white' : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'}
-                             ${day.name === 'Sunday' ? 'rounded-r-md' : ''}
-                             ${day.name === 'Monday' ? 'rounded-l-md' : ''}
-                         `}
-                         on:click={() => handlePageClick(day.name)}
-                        >
-                        {day.name}
-                    </button>
-                    {/each}
-                  </nav>
-              
-            </div>
+        <div class="flex items-center justify-between"> <!-- Contenitore per DayNav e pulsante -->
+            <DayNav {days} {currentPage} {handlePageClick}></DayNav>
+            <button on:click={() => alert('ciao')} class="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700">
+                Aggiungi
+            </button>
         </div>
-        <div class="flex items-center justify-between py-3">
-            <div class="flex flex-1 items-center justify-center">
-                <button
-                    class="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700"
-                    on:click={update}>Update</button> // Aggiorna il programma di allenamento
-            </div>
-        </div>
-        <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-                <table class="min-w-full">
-                    <thead>
-                        <tr>
-                            <th
-                                class="px-6 py-3 w-2/5 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Exercise</th>
-                            <th
-                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Sets</th>
-                            <th
-                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Reps</th>
-                            <th
-                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                Difficulty</th>
-                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                        {#each filteredTraining as training}
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
-                                
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium leading-5 text-gray-900">{training.exercise}
-                                    </div>
-                                    <div class="text-sm leading-5 text-gray-500">{training.muscle}</div>
-                                </div>
-                                
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">{training.sets}</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
-                                <div class="text-sm leading-5 text-gray-900">{training.repetitions}</div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap border-b border-gray-200">
-                                <span
-                                    class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">{training.id}</span>
-                            </td>
-                            <td
-                                class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-nowrap border-b border-gray-200">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                        </tr>
-                        {/each}
-                    </tbody>
-                </table>
-                <div class="absolute z-[-1] w-[40%] h-[35%] top-0 pink__gradient" />
-            <div class="absolute z-[-1] w-[80%] h-[80%] rounded-full white__gradient bottom-40" />
-            <div class="absolute z-[-1] w-[50%] h-[50%] right-20 bottom-20 blue__gradient" />
-            </div>
-        </div>
+        <!-- <form method="post" action="?/add" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <input type="text" name="exercise" placeholder="exercise" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <input type="text" name="sets" placeholder="sets" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
+            <input type="text" name="repetitions" placeholder="reps" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
+            <input type="text" name="day" placeholder="day" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
+            <input type="text" name="user" placeholder="user" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">Add</button>
+        </form>
+
+        <div class="flex items-center justify-center">
+            <button on:click={add} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-4">Add</button>
+        </div> -->
+
+        <Table {filteredTraining}></Table>
     </div>
 </div>
 
