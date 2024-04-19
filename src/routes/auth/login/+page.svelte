@@ -1,6 +1,6 @@
 <script>
     import { page } from '$app/stores';
-    import { goto } from '$app/navigation';
+    import { goto, preloadCode } from '$app/navigation';
 
     export let form;
 
@@ -43,13 +43,23 @@
 
       <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">
         <p>Don't have an account?</p>
-        <button on:click={async () => goto(`/auth/register?redirectTo=${redirectTo}`)} class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Register</button>
+        <button 
+        on:focus={async () => {
+          await preloadCode('/auth/register');
+        }}
+        on:mouseover={async () => {
+          await preloadCode('/auth/register');
+        }}
+        on:click={async () => {
+          goto(`/auth/register?redirectTo=${redirectTo}`)
+        }}
+        class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Register</button>
       </div>
     </div>
 
     <!-- image -->
     <div class="md:block hidden w-1/2">
-      <img class="rounded-2xl" src="https://images.unsplash.com/photo-1616606103915-dea7be788566?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" alt="">
+      <img class="rounded-2xl" src="https://i.pinimg.com/564x/e5/97/c7/e597c75c47c5e47818376307e0edfc73.jpg" alt="">
     </div>
   </div>
 </section>

@@ -23,10 +23,17 @@ export const load = async ({ cookies, url, parent }) => {
             // console.log(rows);
             return rows;
         });
+
+    const exercises = await mysqlconn.query("SELECT * FROM exercises")
+        .then(function([rows,fields]) {
+            // console.log(rows);
+            return rows;
+        });
     
     return {
         title,
         days,
         trainings,
+        exercises
     }
 }

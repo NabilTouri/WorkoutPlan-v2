@@ -1,10 +1,13 @@
 <script>
-    export let data
+    import { createEventDispatcher } from 'svelte';
     import Table from '../../components/table.svelte';
     import DayNav from '../../components/dayNav.svelte'
+    export let data
+
     const title = data.title
     const days = data.days
     const trainings = data.trainings
+    const exercises = data.exercises
 
     let currentPage = 'Monday'; // Imposta la pagina attuale
     let filteredTraining = trainings.filter(item => item.day === currentPage); // Filtra i dati in base alla pagina attuale
@@ -13,7 +16,25 @@
         currentPage = day;
         filteredTraining = trainings.filter(item => item.day === day);
     }
+    let isModalOpen = false;
 
+    const isModal = () => {
+        isModalOpen = true;
+    }
+    
+    // Variabile per gestire la visualizzazione del modal
+    
+
+    // Dispatcher per emettere eventi quando viene aggiunto un nuovo training
+    const dispatch = createEventDispatcher();
+
+    // Funzione per gestire l'aggiunta di un nuovo training
+    const addTraining = () => {
+        // Emetti un evento per notificare al componente padre che è stato aggiunto un nuovo training
+        dispatch('trainingAdded', { day: currentPage });
+        // Chiudi il modal
+        isModalOpen = false;
+    }
 </script>
 
 <!-- component -->
@@ -23,24 +44,51 @@
     <div class="flex flex-col mt-8">
         <div class="flex items-center justify-between"> <!-- Contenitore per DayNav e pulsante -->
             <DayNav {days} {currentPage} {handlePageClick}></DayNav>
-            <button on:click={() => alert('ciao')} class="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700">
+            <button on:click={isModal} class="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-700">
                 Aggiungi
             </button>
         </div>
-        <!-- <form method="post" action="?/add" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <input type="text" name="exercise" placeholder="exercise" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-            <input type="text" name="sets" placeholder="sets" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
-            <input type="text" name="repetitions" placeholder="reps" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
-            <input type="text" name="day" placeholder="day" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
-            <input type="text" name="user" placeholder="user" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4">Add</button>
-        </form>
-
-        <div class="flex items-center justify-center">
-            <button on:click={add} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline my-4">Add</button>
-        </div> -->
 
         <Table {filteredTraining}></Table>
     </div>
-</div>
 
+    {#if isModalOpen}
+    <div>
+        <div class="bg-black bg-opacity-50 fixed inset-0 flex justify-center items-center z-50">
+            <div class="bg-white p-6 rounded-lg shadow-xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold text-gray-800">Aggiungi un nuovo training</h2>
+                    <button class="text-gray-500 hover:text-gray-800" title="Chiudi" aria-label="Chiudi" on:click={() => isModalOpen = false}>
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Contenuto del form per l'aggiunta del training -->
+                <form class="flex flex-col space-y-4">
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <select class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option disabled selected value="" class="text-gray-500">Select a training</option>
+                            {#each exercises as exercise}
+                                <option value={exercise.name} class="text-gray-900 text-base font-normal">{exercise.name}</option>
+                            {/each}
+                        </select>
+                        <select class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option disabled selected value="" class="text-gray-500">Select a training</option>
+                            {#each exercises as exercise}
+                                <option value={exercise.name} class="text-gray-900 text-base font-normal">{exercise.name}</option>
+                            {/each}
+                        </select>
+                        <input type="text" placeholder="Sets" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <input type="text" placeholder="Repetitions" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <button on:click={addTraining} class="bg-indigo-500 text-white font-semibold py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{/if}
+
+
+</div>

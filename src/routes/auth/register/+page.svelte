@@ -1,6 +1,6 @@
 <script>
         import { page } from '$app/stores';
-        import { goto } from '$app/navigation';
+        import { goto, preloadCode } from '$app/navigation';
         export let form;
 
         const redirectTo = $page.url.searchParams.get('redirectTo') || '/';
@@ -55,7 +55,17 @@
 
                 <div class="mt-5 text-xs flex justify-between items-center text-[#002D74] border-t border-[#002D74] pt-4">
                     <p>Already have an account?</p>
-                    <button on:click={async () => goto(`/auth/login?redirectTo=${redirectTo}`)} class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Login</button>
+                    <button
+                    on:focus={async () => {
+                        await preloadCode('/auth/login');
+                      }}
+                      on:mouseover={async () => {
+                        await preloadCode('/auth/login');
+                      }}
+                    on:click={async () =>{
+                        goto(`/auth/login?redirectTo=${redirectTo}`)
+                    }}
+                    class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Login</button>
                 </div>
             </div>
         </div>
