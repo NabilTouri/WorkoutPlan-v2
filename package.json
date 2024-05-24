@@ -31,6 +31,7 @@
 	"type": "module",
 	"dependencies": {
 		"@material-tailwind/html": "^2.2.2",
+		"@vercel/speed-insights": "^1.0.11",
 		"bcrypt": "^5.1.1",
 		"mysql2": "^3.9.2",
 		"swiper": "^11.1.0",

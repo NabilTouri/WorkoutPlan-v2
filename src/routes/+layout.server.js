@@ -1,5 +1,8 @@
 import { redirect } from "@sveltejs/kit"
 import { mysqlconnFn } from "../hooks.server";
+import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+injectSpeedInsights();
 
 export const load = async ({ cookies }) => {
     const mysqlconn = await mysqlconnFn();
