@@ -21,5 +21,4 @@ export const load = async ({ cookies }) => {
             user,
         }
     }
-    
 }

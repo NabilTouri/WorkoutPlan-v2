@@ -4,6 +4,7 @@ import mysql from 'mysql2/promise';
 let mysqlconn = null;
 
 export function mysqlconnFn() {
+
     if (!mysqlconn) {
         mysqlconn = mysql.createConnection({ 
             host: DB_HOST,
@@ -16,7 +17,7 @@ export function mysqlconnFn() {
                 rejectUnauthorized: true // Imposta a true se vuoi che la connessione venga rifiutata se il certificato non è valido
             }
         });
-     
-    return mysqlconn;
     }
+    
+    return mysqlconn;
 }
