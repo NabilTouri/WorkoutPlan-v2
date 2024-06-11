@@ -30,10 +30,27 @@ export const load = async ({ cookies, url, parent }) => {
             return rows;
         });
     
+    const muscles = await mysqlconn.query("SELECT DISTINCT muscle FROM exercises")
+        .then(function([rows,fields]) {
+            // console.log(rows);
+            return rows;
+        });
+    
     return {
         title,
         days,
         trainings,
-        exercises
+        exercises,
+        muscles
+    }
+}
+
+export const actions = {
+    add: async ({ request }) => {
+        console.log("Add action called")
+        const data = await request.formData()
+        const exercise1 = data.get('exercise1')
+        const exercise2 = data.get('exercise2')
+        console.log(exercise1, exercise2)
     }
 }
