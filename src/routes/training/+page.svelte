@@ -15,7 +15,7 @@
 
     // State variables for selected muscle and filtered exercises
     let selectedMuscle = null;
-    let filteredExercises = exercises;
+    let filteredExercises = null;
 
     // Change page function
     const handlePageClick = (day) => {
@@ -68,7 +68,7 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label for="training1" class="block text-gray-700 text-sm font-semibold mb-2">Scegli un esercizio</label>
-                            <select name="exercise1" id="training1" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" on:change={handleMuscleSelect} required>
+                            <select id="training1" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" on:change={handleMuscleSelect} required>
                                 <option disabled selected value="" class="text-gray-500">Seleziona un esercizio</option>
                                 {#each muscles as muscle}
                                     <option value="{muscle.muscle}" class="text-gray-900 text-base font-normal">{muscle.muscle}</option>
@@ -77,20 +77,25 @@
                         </div>
                         <div class="col-span-2">
                             <label for="training2" class="block text-gray-700 text-sm font-semibold mb-2">Scegli un altro esercizio</label>
-                            <select name="exercise2" id="training2" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" required>
-                                <option disabled selected value="" class="text-gray-500">Seleziona un esercizio</option>
-                                {#each filteredExercises as exercise}
-                                    <option value="{exercise.id}" class="text-gray-900 text-base font-normal">{exercise.name}</option>
-                                {/each}
+                            <select name="exercise" id="training2" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" required>
+                                {#if filteredExercises == null}
+                                    <option disabled selected value="" class="text-gray-500">Select a muscle first</option>
+                                {:else}
+                                    <option disabled selected value="" class="text-gray-500">Seleziona un esercizio</option>
+                                    {#each filteredExercises as exercise}
+                                        <option value="{exercise.id}" class="text-gray-900 text-base font-normal">{exercise.name}</option>
+                                    {/each}
+                                {/if}
+
                             </select>
                         </div>
                         <div class="col-span-1">
-                            <label for="sets" class="block text-gray-700 text-sm font-semibold mb-2">Serie</label>
-                            <input id="sets" type="number" min="1" placeholder="Serie" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" required>
+                            <label for="sets" class="block text-gray-700 text-sm font-semibold mb-2">Sets</label>
+                            <input name="sets" id="sets" type="number" min="1" placeholder="Sets" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" required>
                         </div>
                         <div class="col-span-1">
-                            <label for="repetitions" class="block text-gray-700 text-sm font-semibold mb-2">Ripetizioni</label>
-                            <input id="repetitions" type="number" min="1" placeholder="Ripetizioni" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" required>
+                            <label for="repetitions" class="block text-gray-700 text-sm font-semibold mb-2">Repetitions</label>
+                            <input name="reps" id="repetitions" type="number" min="1" placeholder="Repetitions" class="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full mb-4" required>
                         </div>
                     </div>
                     <div class="flex justify-end">

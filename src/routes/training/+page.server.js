@@ -49,8 +49,16 @@ export const actions = {
     add: async ({ request }) => {
         console.log("Add action called")
         const data = await request.formData()
-        const exercise1 = data.get('exercise1')
-        const exercise2 = data.get('exercise2')
-        console.log(exercise1, exercise2)
+        const exercise = data.get('exercise')
+        const sets = data.get('sets')
+        const reps = data.get('reps')
+        console.log(exercise, sets, reps)
+        try {
+            const mysqlconn = await mysqlconnFn();
+            await mysqlconn.query(`INSERT INTO trainings (day_id, exercise_id, sets, repetitions, user_id) VALUES (1, ${exercise}, ${sets}, ${reps}, 1);`) 
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 }
