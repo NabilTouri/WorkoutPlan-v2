@@ -46,19 +46,23 @@ export const load = async ({ cookies, url, parent }) => {
 }
 
 export const actions = {
-    add: async ({ request }) => {
+    add: async ({ request, fetch }) => {
         console.log("Add action called")
         const data = await request.formData()
+        const day = data.get('day')
         const exercise = data.get('exercise')
         const sets = data.get('sets')
         const reps = data.get('reps')
-        console.log(exercise, sets, reps)
+        const user_id = await fetch('/api/user').then(res => res.json()).then(data => data.id)
         try {
             const mysqlconn = await mysqlconnFn();
-            await mysqlconn.query(`INSERT INTO trainings (day_id, exercise_id, sets, repetitions, user_id) VALUES (1, ${exercise}, ${sets}, ${reps}, 1);`) 
+            await mysqlconn.query(`INSERT INTO trainings (day_id, exercise_id, sets, repetitions, user_id) VALUES (${day}, ${exercise}, ${sets}, ${reps}, ${user_id})`)
         }
         catch (error) {
             console.log(error)
         }
+    },
+    delete: async ({ request }) => {
+        console.log("Delete action called")
     }
 }

@@ -10,8 +10,8 @@
     const exercises = data.exercises;
     const muscles = data.muscles;
 
-    let currentPage = 'Monday'; // Actual page
-    let filteredTraining = trainings.filter(item => item.day === currentPage); // Filtered training
+    let currentPage =  days[0]; // Current page
+    let filteredTraining = trainings.filter(item => item.day === currentPage.name); // Filtered training
 
     // State variables for selected muscle and filtered exercises
     let selectedMuscle = null;
@@ -19,8 +19,8 @@
 
     // Change page function
     const handlePageClick = (day) => {
-        currentPage = day;
-        filteredTraining = trainings.filter(item => item.day === day);
+        currentPage = day
+        filteredTraining = trainings.filter(item => item.day === day.name);
     };
 
     // Open modal function
@@ -35,6 +35,7 @@
         selectedMuscle = muscleName;
         filteredExercises = exercises.filter(exercise => exercise.muscle === muscleName);
     };
+    
 </script>
 
 <!-- component -->
@@ -65,6 +66,7 @@
                     </button>
                 </div>
                 <form method="post" action="?/add" class="space-y-4">
+                    <input type="hidden" name="day" value={currentPage.id}>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
                             <label for="training1" class="block text-gray-700 text-sm font-semibold mb-2">Scegli un esercizio</label>

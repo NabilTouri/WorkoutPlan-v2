@@ -12,12 +12,12 @@
             <button 
                  class={`
                      relative inline-flex items-center justify-center py-2 text-sm font-semibold
-                     ${currentPage === day.name ? 'bg-indigo-600 text-white' : 'bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'}
+                     ${currentPage.name === day.name ? 'bg-indigo-600 text-white' : 'bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'}
                      ${day.name === 'Sunday' ? 'rounded-r-md' : ''}
                      ${day.name === 'Monday' ? 'rounded-l-md' : ''}
                      w-28
                  `}
-                 on:click={() => handlePageClick(day.name)}
+                 on:click={() => handlePageClick(day)}
                 >
                 {day.name}
             </button>
